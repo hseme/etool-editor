@@ -1,3 +1,3 @@
 <div align="center">
-  <h1>ETool Core</h1>
+  <h1>ETool Editor</h1>
 </div>
