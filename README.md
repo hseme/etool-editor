@@ -1,3 +1,3 @@
 <div align="center">
-  <h1>Vite + Vue3 + Typescript + Eslint + Stylelint + Standard + Naive-ui</h1>
+  <h1>ETool Core</h1>
 </div>
