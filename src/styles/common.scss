@@ -1,5 +1,6 @@
 html,
-body {
+body,
+#app {
   font-family:
     "core_sans_n45_regular",
     "Avenir Next",
@@ -13,4 +14,5 @@ body {
     "WenQuanYi MicroHei",
     sans-serif !important;
   font-size: 14px;
+  height: 100%;
 }

@@ -1,8 +1,7 @@
-import { EToolEditor } from '@/components/etool-editor';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'DashNormal',
+  name: 'EToolBody',
 
   setup () {
     //
@@ -10,7 +9,7 @@ export default defineComponent({
 
   render () {
     return (
-      <EToolEditor />
+      <div class='etool-body'></div>
     );
   }
 });

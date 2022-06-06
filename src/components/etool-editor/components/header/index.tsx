@@ -1,8 +1,9 @@
-import { EToolEditor } from '@/components/etool-editor';
 import { defineComponent } from 'vue';
 
+import './style.scss';
+
 export default defineComponent({
-  name: 'DashNormal',
+  name: 'EToolHeader',
 
   setup () {
     //
@@ -10,7 +11,7 @@ export default defineComponent({
 
   render () {
     return (
-      <EToolEditor />
+      <div class='etool-header'>header</div>
     );
   }
 });
