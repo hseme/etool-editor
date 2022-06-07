@@ -1,0 +1,11 @@
+$spilitter: "etool-splitter";
+
+.#{$spilitter} {
+  &--workable.#{$spilitter}--vertical {
+    cursor: col-resize;
+  }
+
+  &--workable.#{$spilitter}--horizontal {
+    cursor: row-resize;
+  }
+}

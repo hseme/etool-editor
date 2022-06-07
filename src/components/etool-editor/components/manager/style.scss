@@ -1,0 +1,12 @@
+.editor-manager {
+  border-left: 1px solid #dedede;
+  position: relative;
+  width: 321px;
+  z-index: 700;
+  background: #fff;
+  flex-shrink: 0;
+  height: 100%;
+  transition: 50ms;
+  display: flex;
+  flex-direction: column;
+}
