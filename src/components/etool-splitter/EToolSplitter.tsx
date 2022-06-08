@@ -54,8 +54,8 @@ export default defineComponent({
       'etool-splitter',
       'flex',
       'flex-nowrap',
-      props.horizontal === true ? 'etool-splitter--horizontal flex-col' : 'etool-splitter--vertical flex-row',
-      `etool-splitter--${props.disable === true ? 'disabled' : 'workable'}`
+      props.horizontal === true ? 'etool-splitter__horizontal flex-col' : 'etool-splitter__vertical flex-row',
+      `etool-splitter__${props.disable === true ? 'disabled' : 'workable'}`
     ]));
 
     const propName = computed(() => (props.horizontal === true ? 'height' : 'width'));
@@ -88,7 +88,7 @@ export default defineComponent({
         __value = Math.min(__maxValue, computedLimits.value[1], Math.max(computedLimits.value[0], props.modelValue as number));
         __multiplier = (props.reverse !== true ? 1 : -1) * (props.unit === '%' ? (size === 0 ? 0 : 100 / size) : 1);
 
-        rootRef.value!.classList.add('q-splitter--active');
+        rootRef.value!.classList.add('q-splitter__active');
         return;
       }
 
@@ -97,7 +97,7 @@ export default defineComponent({
           emit('update:modelValue', __normalized);
         }
 
-        rootRef.value!.classList.remove('q-splitter--active');
+        rootRef.value!.classList.remove('q-splitter__active');
         return;
       }
 
@@ -145,6 +145,7 @@ export default defineComponent({
       sepDirective,
       horizontal,
       disable,
+      reverse,
       $slots
     } = this;
 
@@ -155,7 +156,8 @@ export default defineComponent({
       >
         <div
           class={[
-            'etool-splitter__panel etool-splitter__before'
+            'etool-splitter__panel etool-splitter__before',
+            reverse === true ? horizontal === true ? 'flex-1 h-auto min-h-0 max-h-full' : 'flex-1 w-auto min-w-0 max-w-full' : ''
           ]}
           ref={this.sideRefs.before}
           style= {this.styles.before}
@@ -196,8 +198,7 @@ export default defineComponent({
         <div
           class={[
             'ettol-splitter__panel etool-splitter__after',
-            'flex-1',
-            horizontal === true ? 'h-auto min-h-0 max-h-full' : 'w-auto min-w-0 max-w-full'
+            reverse === true ? '' : horizontal === true ? 'flex-1 h-auto min-h-0 max-h-full' : 'flex-1 w-auto min-w-0 max-w-full'
           ]}
           ref={this.sideRefs.after}
           style= {this.styles.after}

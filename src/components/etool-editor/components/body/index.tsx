@@ -1,7 +1,6 @@
-import { computed, defineComponent, DirectiveArguments, h, ref, withDirectives } from 'vue';
+import { defineComponent, ref } from 'vue';
 import EToolManager from '../manager';
 import { EToolSplitter } from '../../../etool-splitter';
-import TouchPan from '@/directives/TouchPan.js';
 
 import './style.scss';
 
@@ -9,67 +8,49 @@ export default defineComponent({
   name: 'EToolBody',
 
   setup () {
-    //
-
-    function pan ({ evt, ...info }: any) {
-      console.log(evt, info);
-    }
-
-    const sepDirective = computed<DirectiveArguments>(() => {
-      return [[
-        TouchPan,
-        pan,
-        '',
-        {
-          prevent: true,
-          stop: true,
-          mouse: true,
-          mouseAllDir: true
-        }
-      ]];
-    });
-
     return {
-      sepDirective,
-      splitterModel: ref(50)
+      splitterModel: ref(280),
+      splitterHModel: ref(300)
     };
   },
 
   render () {
-    const {
-      sepDirective
-    } = this;
-
     return (
       <div class='etool-body'>
         <div class='w-full h-full relative'>
-          <EToolSplitter horizontal v-model={this.splitterModel} limits={[50, 100]} style={{ height: '500px' }}>
+          <EToolSplitter v-model={this.splitterModel} limits={[280, 560]} unit='px' style={{ height: '100%' }}>
             {{
               before: () => {
                 return (
                   <div>
-                    before
+                    left sider
                   </div>
                 );
               },
               after: () => {
                 return (
-                  <div>
-                    after
-                  </div>
+                  <EToolSplitter horizontal v-model={this.splitterHModel} unit='px' limits={[300, Infinity]} reverse style={{ height: '100%' }}>
+                    {{
+                      before: () => {
+                        return (
+                          <div>
+                            editor
+                          </div>
+                        );
+                      },
+                      after: () => {
+                        return (
+                          <div>
+                            queries
+                          </div>
+                        );
+                      }
+                    }}
+                  </EToolSplitter>
                 );
               }
             }}
           </EToolSplitter>
-
-          {
-            withDirectives(
-              h('div', {
-                class: 'w-[30rem] h-[30rem]'
-              }),
-              sepDirective
-            )
-          }
         </div>
         <EToolManager />
       </div>

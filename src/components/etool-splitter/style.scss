@@ -1,8 +1,14 @@
 $spilitter: "etool-splitter";
 
 .#{$spilitter} {
-  .#{$spilitter}__separator {
-    background-color: #0000001f;
+  &__after,
+  &__before {
+    overflow: auto;
+  }
+
+  &__separator {
+    // background-color: #dedede;
+    box-sizing: border-box;
     user-select: none;
     position: relative;
     z-index: 1;
@@ -12,39 +18,46 @@ $spilitter: "etool-splitter";
       bottom: 0;
       left: 0;
       right: 0;
+      transition: background-color .5s;
     }
   }
 
-  &--workable {
-    &.#{$spilitter}--vertical {
-      .#{$spilitter}__separator {
+  &__separator > div:hover {
+    background-color: rgb(0 0 0 / 6%);
+  }
+
+  &__workable {
+    &.#{$spilitter}__vertical {
+      & > .#{$spilitter}__separator {
         cursor: col-resize;
       }
     }
 
-    &.#{$spilitter}--horizontal {
-      .#{$spilitter}__separator {
+    &.#{$spilitter}__horizontal {
+      & > .#{$spilitter}__separator {
         cursor: row-resize;
       }
     }
   }
 
-  &--vertical > &__separator {
-    width: 1px;
+  &__vertical > &__separator {
+    // width: 1px;
+    border-right: 1px solid #dedede;
   }
 
-  &--horizontal > &__separator {
-    height: 1px;
+  &__horizontal > &__separator {
+    // height: 1px;
+    border-top: 1px solid #dedede;
   }
 
-  &--vertical {
+  &__vertical {
     & > .#{$spilitter}__separator > div {
       left: -6px;
       right: -6px;
     }
   }
 
-  &--horizontal {
+  &__horizontal {
     & > .#{$spilitter}__separator > div {
       top: -6px;
       bottom: -6px;
