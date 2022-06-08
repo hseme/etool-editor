@@ -1,11 +1,53 @@
 $spilitter: "etool-splitter";
 
 .#{$spilitter} {
-  &--workable.#{$spilitter}--vertical {
-    cursor: col-resize;
+  .#{$spilitter}__separator {
+    background-color: #0000001f;
+    user-select: none;
+    position: relative;
+    z-index: 1;
+
+    & > div {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
 
-  &--workable.#{$spilitter}--horizontal {
-    cursor: row-resize;
+  &--workable {
+    &.#{$spilitter}--vertical {
+      .#{$spilitter}__separator {
+        cursor: col-resize;
+      }
+    }
+
+    &.#{$spilitter}--horizontal {
+      .#{$spilitter}__separator {
+        cursor: row-resize;
+      }
+    }
+  }
+
+  &--vertical > &__separator {
+    width: 1px;
+  }
+
+  &--horizontal > &__separator {
+    height: 1px;
+  }
+
+  &--vertical {
+    & > .#{$spilitter}__separator > div {
+      left: -6px;
+      right: -6px;
+    }
+  }
+
+  &--horizontal {
+    & > .#{$spilitter}__separator > div {
+      top: -6px;
+      bottom: -6px;
+    }
   }
 }
